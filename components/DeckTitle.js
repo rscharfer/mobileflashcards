@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 
 export default class DeckTitle extends React.Component {
@@ -11,11 +11,11 @@ export default class DeckTitle extends React.Component {
 
   render() {
     return (
-      <div>
+      <View>
         
-        <h3>Title</h3>
-        <span>Number of flash cards:</span><i>10</i>
-      </div> 
+        <Text>Title</Text>
+        <Text>Number of flash cards: 10</Text>
+      </View> 
 
       
     );

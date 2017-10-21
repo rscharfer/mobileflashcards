@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import DeckTitle from 'components/DeckTitle.js';
+import DeckTitle from 'DeckTitle.js';
 
 export default class DeskList extends React.Component {
   render() {

@@ -1,7 +1,7 @@
-export const getAllDecks = () => {
+export default function getDeckData (deck){
 
 
-	return {
+	const allDecks =  {
   			React: {
     			title: 'React',
     			questions: [
@@ -25,4 +25,7 @@ export const getAllDecks = () => {
     			]
   			}
 		}
+
+
+		return typeof deck === 'undefined'? allDecks : allDecks[deck]
 }

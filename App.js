@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import getAllDecks from './helpers/getAllDecks.js'
+import getDeckData from './helpers/getDeckData.js'
 // import { DeckList }  from './components/DeckList.js';
 
 export default class App extends React.Component {
@@ -11,7 +11,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
       {
 
-        Object.keys(getAllDecks()).map(deck=> <Text>{deck.title}</Text>)
+        Object.keys(getDeckData()).map(deck=> <Text>{deck.title}</Text>)
       }
 
       </View>

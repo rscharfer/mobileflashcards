@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import getDeckData from './utils/helpers/getDeckData.js'
+import getDeckData from './utils/helpers/getDeckData'
 // import { DeckList }  from './components/DeckList.js';
 
 export default class App extends React.Component {
@@ -8,11 +8,14 @@ export default class App extends React.Component {
  
   render() {
 
-    const allDecks = getDeckData();
+    const reactDeck = getDeckData('React');
+    const str = "yo"
+    debugger;
     return (
       <View style={styles.container}>
-      
-        <Text>Testing</Text>
+        
+        <Text>{reactDeck.title}</Text>
+
       </View>
 
       

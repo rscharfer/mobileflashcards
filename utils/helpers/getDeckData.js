@@ -26,6 +26,6 @@ export default function getDeckData (deck){
   			}
 		}
 
-
+		
 		return typeof deck === 'undefined'? allDecks : allDecks[deck]
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import getDeckData from '../utils/helpers/getDeckData'
 import DeckTitleAndQuestionTotal from './DeckTitleAndQuestionTotal'
+import CreateNewDeck from './CreateNewDeck'
 
 
 
@@ -23,6 +24,7 @@ export default function DeckOverview (props){
 
 			 }
 
+			 <CreateNewDeck/>
 		</View>
 
 	)

@@ -16,7 +16,7 @@ export default function CreateNewDeck (props){
 		}
 	}
 
-	function handlePress(){
+	handlePress(){
 
 		const deckname = this.state.deckName;
 		// add the value to app's decks

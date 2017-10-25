@@ -19,8 +19,8 @@ export default function CreateNewDeck (props){
 	handlePress(){
 
 		const deckname = this.state.deckName;
-		// add the value to app's decks
-		// 
+		// update database
+		//  reroute
 
 	}
 

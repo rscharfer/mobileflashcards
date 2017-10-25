@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import getDeckData from '../utils/helpers/getDeckData'
 import DeckTitleAndQuestionTotal from './DeckTitleAndQuestionTotal'
-import CreateNewDeck from './CreateNewDeck'
+import CreateNewDeckButton from './CreateNewDeckButton'
 
 
 
@@ -18,13 +18,13 @@ export default function DeckOverview (props){
 		<View>
 
 			<Text>Decks</Text>
+				<View>
+				 {
+					Object.keys(allDecks).map(deck=><DeckTitleAndQuestionTotal key={deck} title={allDecks[deck].title} questionTotal={allDecks[deck].questions.length} />)
 
-			 {
-				Object.keys(allDecks).map(deck=><DeckTitleAndQuestionTotal key={deck} title={allDecks[deck].title} questionTotal={allDecks[deck].questions.length} />)
-
-			 }
-
-			 <CreateNewDeck/>
+				 }
+				 </View>
+			 <CreateNewDeckButton/>
 		</View>
 
 	)

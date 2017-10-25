@@ -4,12 +4,12 @@ import { Text } from 'react-native'
 
 
 
-export default function DeckTitleAndQuestionTotal (props){
+export default function DeckTitleAndQuestionTotal ({name, noOfCards}){
 
 
 	return (
 
-		<Text>{props.title}&nbsp;&nbsp;&nbsp;{props.questionTotal}&nbsp;</Text>
+		<Text>{name}&nbsp;&nbsp;&nbsp;{noOfCards}&nbsp;</Text>
 
 		)
 }

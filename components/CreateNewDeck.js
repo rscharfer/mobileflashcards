@@ -22,8 +22,9 @@ export default function CreateNewDeck (props){
 				onpress={handlePress}
 
 			>
-			<View>
-				<Text>TCN Button</Text>
+
+			<View style={{width:150,height:100,backgroundColor:'red'}}>
+				<Text>Create Deck</Text>
 			</View>
 
 			</TouchableNativeFeedback>

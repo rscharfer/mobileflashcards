@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Text, View, Button } from 'react-native'
+import {Text, View, TouchableNativeFeedback } from 'react-native'
 
 
 export default function CreateNewDeckButton () {
@@ -15,11 +15,13 @@ export default function CreateNewDeckButton () {
 	return (
 
 
-		<Button 
-		title="Create Deck"
-		onPress={handlePress}
-		color="blue"
-		/>
+		 <TouchableNativeFeedback
+        onPress={handlePress}
+        background={TouchableNativeFeedback.SelectableBackground()}>
+      <View style={{width: 150, height: 100, backgroundColor: 'red'}}>
+        <Text style={{margin: 30}}>Create Deck</Text>
+      </View>
+    </TouchableNativeFeedback>
 
 		
 

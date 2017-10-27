@@ -2,25 +2,33 @@ import { AsyncStorage } from 'react-native'
 
 
 
-const STORAGEKEY = "STORAGEKEY";
+const DECKS = "DECKS";
 
 
-export function addDeck({name}){
+export function addDeck(name){
 
-
-	return AsyncStorage.mergeItem(STORAGEKEY,JSON.stringify(name))
-}
-
-
-
-export function removeDeck({name}){
-
-
-	return AsyncStorage.getItem(STORAGEKEY)
-
-	.then(res=>{
-
-		const data = JSON.parse(res);
-		data.splice(data.indexOf(name),1)
+	return AsyncStorage.getItem(DECKS)
+	.then(res=>JSON.parse(res))
+	.then(deckArray=>{
+		deckArray.push(name)
+		return deckArray;
 	})
+	.then(newDeck=>AsyncStorage.setItem(DECKS,JSON.parse(newDeck))
+	)
+	
+
 }
+
+
+
+// export function removeDeck({name}){
+
+
+// 	return AsyncStorage.getItem(STORAGEKEY)
+
+// 	.then(res=>{
+
+// 		const data = JSON.parse(res);
+// 		data.splice(data.indexOf(name),1)
+// 	})
+// }

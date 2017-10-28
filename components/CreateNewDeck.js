@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, View, TouchableNativeFeedback, TextInput } from 'react-native'
+import { saveDeckTitle } from  '../utils/api.js'
 
 
 
 
-export default function CreateNewDeck (props){
+export default class CreateNewDeck extends Component {
 
 
 	constructor(props){
 
+		super(props);
 
 		this.state={
 			deckName:'Flowers of South Africa',
@@ -19,12 +21,15 @@ export default function CreateNewDeck (props){
 	handlePress(){
 
 		const deckname = this.state.deckName;
+		saveDeckTitle(deckname)
 		// update database
 		//  reroute
 
 	}
 
-	return (
+	render() {
+
+		return (
 		<View>
 			<Text>Create a New Deck</Text>
 			<Text>Name of Deck: {this.state.deckName}</Text>
@@ -47,4 +52,5 @@ export default function CreateNewDeck (props){
 
 
 		)
+	}
 }

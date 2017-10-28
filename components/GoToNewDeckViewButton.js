@@ -4,13 +4,13 @@ import {Text, View, TouchableNativeFeedback } from 'react-native'
 
 
 
-export default function CreateNewDeckButton () {
+export default function GoToNewDeckViewButton () {
 
 
 	function handlePress(){
 
 		
-		// route to CreateNewDeck 
+		// route to NewDeckView 
 	}
 
 	return (

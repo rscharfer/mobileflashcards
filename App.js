@@ -1,5 +1,5 @@
 import React from 'react';
-import DeckOverview from './components/DeckOverview'
+import DeckListView from './components/DeckListView'
 
 
 export default class App extends React.Component {
@@ -7,7 +7,7 @@ export default class App extends React.Component {
  
   render() {
 
-    return <DeckOverview/>
+    return <DeckListView/>
   }
 }
 

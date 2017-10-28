@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 
 
 
-export default function DeckTitleAndQuestionTotal ({name, noOfCards}){
+export default function DeckListItem ({name, noOfCards}){
 
 
 	return (

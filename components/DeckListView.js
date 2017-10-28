@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text, View, ScrollView, FlatList } from 'react-native'
-import getDeckData from '../utils/helpers/getDeckData'
-import DeckTitleAndQuestionTotal from './DeckTitleAndQuestionTotal'
-import CreateNewDeckButton from './CreateNewDeckButton'
+import getDecks from '../utils/api.js'
+import DeckListItem from './DeckListItem'
+import GoToNewDeckViewButton from './GoToNewDeckViewButton'
 
 
 
@@ -11,7 +11,7 @@ import CreateNewDeckButton from './CreateNewDeckButton'
 export default function DeckOverview (props){
 
 
-	const allDecks = getDeckData();
+	const allDecks = getDecks();
 	const allDecksToArray = Object.keys(allDecks).map((key)=>allDecks[key])
 
 	
@@ -29,7 +29,7 @@ export default function DeckOverview (props){
 						renderItem={({item})=><Text>{item.title}</Text>}
 					/>
 				 </View>
-			 <CreateNewDeckButton/>
+			 <GoToNewDeckViewButton/>
 		</View>
 
 	)

@@ -5,30 +5,70 @@ import { AsyncStorage } from 'react-native'
 const DECKS = "DECKS";
 
 
-export function addDeck(name){
 
-	return AsyncStorage.getItem(DECKS)
-	.then(res=>JSON.parse(res))
-	.then(deckArray=>{
-		deckArray.push(name)
-		return deckArray;
-	})
-	.then(newDeck=>AsyncStorage.setItem(DECKS,JSON.parse(newDeck))
-	)
-	
+// returns a promise
+
+export function saveDeckTitle(title){
+
+	// assuming you do not have to first set an inital value
+
+	return AsyncStorage.mergeItem(DECKS,JSON.stringify({title}),
+
+			()=>{AsyncStorage.getItem(DECKS),
+
+					(result)=>{alert(JSON.stringify(result))}
+
+			}
+
+		)
 
 }
 
 
 
-// export function removeDeck({name}){
+// returns a promise
+
+export function getDecks(){
 
 
-// 	return AsyncStorage.getItem(STORAGEKEY)
+	return AsyncStorage.getItem(DECKS)
+}
 
-// 	.then(res=>{
 
-// 		const data = JSON.parse(res);
-// 		data.splice(data.indexOf(name),1)
-// 	})
-// }
+
+
+// returns a promise
+
+export function getDeck(id){
+
+
+	return AsyncStorage.getItem(DECKS)
+
+	.then((result)=>JSON.parse(result))
+	.then((parsedResult)=>parsedResult[id])
+}
+
+
+// returns a promis
+
+
+export function addCardToDeck({title,card}){
+
+
+
+	return AsyncStorage.getItem(DECKS)
+
+	.then((result)=>JSON.parse(result))
+	.then((parsedResult)=>parsedResult[id])
+	.then((deck)=>{
+		deck.questions.push(card)
+		return deck;
+	})
+	.then((updatedDeck)=>{
+		AsyncStorage.mergeItem(DECKS,JSON.stringify({[title]:updatedDeck}))
+	})
+}
+
+
+
+

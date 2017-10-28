@@ -21,6 +21,10 @@ This project requires the developer to use React Native to create an application
 * After the dependencies have been installed run the command `$ yarn start`
 * After that, the app should run perfectly!
 
+### Testing
+
+* Due to lack of resources, the application was only tested on an Android platform.
+
 
 ### Sources
 

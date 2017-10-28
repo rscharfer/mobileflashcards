@@ -10,17 +10,15 @@ const DECKS = "DECKS";
 
 export function saveDeckTitle(title){
 
-	// assuming you do not have to first set an inital value
 
-	return AsyncStorage.mergeItem(DECKS,JSON.stringify({title}),
-
-			()=>{AsyncStorage.getItem(DECKS),
-
-					(result)=>{alert(JSON.stringify(result))}
-
-			}
-
-		)
+	AsyncStorage.mergeItem( DECKS , JSON.stringify({
+		[title]:{
+			title,
+			questions:[]
+		}
+		})
+	)
+	
 
 }
 

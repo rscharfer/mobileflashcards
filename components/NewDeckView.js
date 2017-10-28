@@ -34,6 +34,7 @@ export default class NewDeckView extends Component {
 
 	render() {
 
+		console.log('new deck view rendered')
 		return (
 		<View>
 			<Text>Create a New Deck</Text>
@@ -47,7 +48,7 @@ export default class NewDeckView extends Component {
 
 			<TouchableNativeFeedback
 				background={TouchableNativeFeedback.SelectableBackground()}
-				onpress={handlePress}
+				onpress={this.handlePress}
 			>
 				<View style={{width:150,height:100,backgroundColor:'red'}}>
 					<Text style={{margin:30}}>Create Deck</Text>

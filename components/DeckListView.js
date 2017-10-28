@@ -1,50 +1,52 @@
 import React from 'react'
-import { Text, View, ScrollView, FlatList } from 'react-native'
-import getDecks from '../utils/api.js'
-import DeckListItem from './DeckListItem'
-import NewDeckView from './DeckListItem'
-import GoToNewDeckViewButton from './GoToNewDeckViewButton'
+import { Text, View, Button } from 'react-native'
 import { StackNavigator } from 'react-navigation'
+import NewDeckView from './NewDeckView'
 
 
-// second edited out  const Stack = StackNavigator({
-//   DeckListView: {
-//     screen: DeckListView
-//   },
-//   NewDeckView: {
-//     screen: NewDeckView
-//   }
-// })
+const Stack = StackNavigator({
+
+		Home : {
+			screen: DeckListView
+		},
+
+		NewDeckView: {
+			screen:NewDeckView
+		}
+
+		
+	})
 
 
 
 
-
-export default function DeckListView (props){
+export default class DeckListView extends React.Component {
 
 	
-	console.log('hello from the console again')
-	getDecks().then((res)=>console.log(res));
-	// const allDecksToArray = Object.keys(allDecks).map((key)=>allDecks[key])
 
-	
+	render (){
 
-
-	return (
+		const { navigate } = this.props.navigation;
+		return (
 		
 		<View>
 
-			<Text>Decks</Text>
-			<Text>Testes- alert and debugger</Text>
+			<Text>Deck</Text>
+			<Text>Testes- alert </Text>
+		
 				<View>
-				{/*	<FlatList
-						data={allDecksToArray}
-						renderItem={({item})=><Text>{item.title}</Text>}
-					/>  */}
+		
 				 </View>
-			{/* first edited out <GoToNewDeckViewButton navigation={props.navigation}/> */}
+			<Button title="New Deck" onpress={()=>navigate('NewDeckView',{name:'New Deck'})}/>
 		</View>
 
 	)
+
+
+
+	}
 		
 }
+
+// How odo
+// is the StackNavigator function called only once in an app

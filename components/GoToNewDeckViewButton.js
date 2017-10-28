@@ -10,7 +10,7 @@ export default function GoToNewDeckViewButton (props) {
 	
 	function handlePress(){
 
-		console.log('here is props',typeof props.stack)
+		
 		navigation.navigate('TestComponent')
 	}
 

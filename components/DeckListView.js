@@ -5,10 +5,20 @@ import DeckListItem from './DeckListItem'
 import GoToNewDeckViewButton from './GoToNewDeckViewButton'
 
 
+const Stack = StackNavigator({
+  DeckListView: {
+    screen: DeckListView
+  },
+  NewDeckView: {
+    screen: NewDeckView
+  }
+})
 
 
 
-export default function DeckOverview (props){
+
+
+export default function DeckListView (props){
 
 
 	const allDecks = getDecks();
@@ -29,7 +39,7 @@ export default function DeckOverview (props){
 						renderItem={({item})=><Text>{item.title}</Text>}
 					/>
 				 </View>
-			 <GoToNewDeckViewButton/>
+			 <GoToNewDeckViewButton navigation={props.navigation}/>
 		</View>
 
 	)

@@ -2,17 +2,19 @@ import React from 'react'
 import { Text, View, ScrollView, FlatList } from 'react-native'
 import getDecks from '../utils/api.js'
 import DeckListItem from './DeckListItem'
+import NewDeckView from './DeckListItem'
 import GoToNewDeckViewButton from './GoToNewDeckViewButton'
+import { StackNavigator } from 'react-navigation'
 
 
-const Stack = StackNavigator({
-  DeckListView: {
-    screen: DeckListView
-  },
-  NewDeckView: {
-    screen: NewDeckView
-  }
-})
+// second edited out  const Stack = StackNavigator({
+//   DeckListView: {
+//     screen: DeckListView
+//   },
+//   NewDeckView: {
+//     screen: NewDeckView
+//   }
+// })
 
 
 
@@ -20,9 +22,10 @@ const Stack = StackNavigator({
 
 export default function DeckListView (props){
 
-
-	const allDecks = getDecks();
-	const allDecksToArray = Object.keys(allDecks).map((key)=>allDecks[key])
+	
+	console.log('hello from the console again')
+	getDecks().then((res)=>console.log(res));
+	// const allDecksToArray = Object.keys(allDecks).map((key)=>allDecks[key])
 
 	
 
@@ -32,14 +35,14 @@ export default function DeckListView (props){
 		<View>
 
 			<Text>Decks</Text>
-			<Text>Testes-F</Text>
+			<Text>Testes- alert and debugger</Text>
 				<View>
-					<FlatList
+				{/*	<FlatList
 						data={allDecksToArray}
 						renderItem={({item})=><Text>{item.title}</Text>}
-					/>
+					/>  */}
 				 </View>
-			 <GoToNewDeckViewButton navigation={props.navigation}/>
+			{/* first edited out <GoToNewDeckViewButton navigation={props.navigation}/> */}
 		</View>
 
 	)

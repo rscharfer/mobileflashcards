@@ -4,12 +4,12 @@ import { Text } from 'react-native'
 
 
 
-export default function DeckListItem ({name, noOfCards}){
+export default function DeckListItem ({title, noOfCards}){
 
 
 	return (
 
-		<Text>{name}&nbsp;&nbsp;&nbsp;{noOfCards}&nbsp;</Text>
+		<Text>{title}&nbsp;&nbsp;&nbsp;{noOfCards}&nbsp;</Text>
 
 		)
 }

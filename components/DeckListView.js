@@ -1,53 +1,111 @@
-import React from 'react'
-import { Text, View, Button } from 'react-native'
+import React, { Component } from 'react'
+import { Text, View, Button, StyleSheet, FlatList } from 'react-native'
 import { StackNavigator } from 'react-navigation'
+
+
+import { getDecks } from '../utils/api'
 import NewDeckView from './NewDeckView'
+import DeckListItem from './DeckListItem'
 
 
 
 
 
 
+export default class DeckListView extends Component {
 
-export default function DeckListView ({ navigation }) {
+		constructor(props){
+
+
+			super(props)
+
+			this.state = {
+
+				decks: []
+			}
+
+		
+		}
+
+
+		componentDidMount(){
+
+            console.log('props now test',this.props)
+			getDecks()
+			.then( result => {
+
+				const parsedResult = JSON.parse(result);
+				const deckNames = Object.keys(parsedResult);
+				const deckObjects  = [];
+				deckNames.forEach( deckName => {
+					parsedResult[deckName].key = parsedResult[deckName].title	 
+					deckObjects.push(parsedResult[deckName])
+				})
+
+				this.setState({
+					decks:deckObjects
+				})
+
+			} )
+		}
+
 
 	
 
+		
+		render(){
+
+			return (
 
 
 		
-		return (
-		
-		<View>
+					<View style={styles.container}>
+						<Text style={styles.header}>Decks</Text>
+						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
+						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView')}}/>
+					</View>
 
-			<Text>Deck</Text>
-			<Text>Testes- alert </Text>
-		
-				<View>
-		
-				 </View>
-			<Button title="New Deck" onpress={()=>navigation.navigate('NewDeckView',{name:'New Deck'})}/>
-		</View>
-
-	)
-
-
-
-	
-		
+			)
+		}		
 }
+
+
+const styles = StyleSheet.create({
+
+
+	header:{
+		fontSize:30,
+		margin:20,
+
+	},
+
+	container:{
+
+		flex:1,
+		justifyContent:'flex-start',
+		alignItems:'center'
+	},
+
+	button:{
+
+		width:50
+	}
+})
 
 
 const Stack = StackNavigator({
 
-		Home : {
-			screen: DeckListView
+		DeckListView : {
+			screen: DeckListView,
+		
 		},
 
 		NewDeckView: {
-			screen:NewDeckView
+			screen:NewDeckView,
+	
 		}
 
 		
 	})
+
 

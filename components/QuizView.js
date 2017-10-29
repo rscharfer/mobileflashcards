@@ -29,7 +29,8 @@ export default class QuizView extends Component {
 
 			questionNumber:0,
 			questionIsShown:false,
-			correctAnswers:0
+			correctAnswers:0,
+			endOfDeck:false
 		}
 
 	
@@ -56,10 +57,30 @@ export default class QuizView extends Component {
 
 		this.setState((prevState)=>{
 
-			return{
-				questionNumber:++prevState.questionNumber,
-				correctAnswers:++prevState.correctAnswers
+			const updatedQuestionNumber = ++prevState.questionNumber
+			console.log("uqn", updatedQuestionNumber)
+			console.log('len',prevState.questions.length)
+
+
+			if(updatedQuestionNumber>=prevState.questions.length){
+
+				return {
+				correctAnswers:++prevState.correctAnswers,
+				endOfDeck:true
+
+				}
+
 			}
+
+			else {
+				return {
+
+				questionNumber:updatedQuestionNumber,
+				correctAnswers:++prevState.correctAnswers
+				}
+			}
+
+			
 		})
 	}
 
@@ -77,34 +98,48 @@ export default class QuizView extends Component {
 	render(){
 
 		const state = this.state;
-		const questionAndAnswer = state.questions[state.questionNumber];
-		const question = questionAndAnswer.question;
-		const answer = questionAndAnswer.answer;
+		let question, answer;
+
+		if (!state.endOfDeck){
+
+			question =  state.questions[state.questionNumber].question;
+			answer = state.questions[state.questionNumber].answer;
+		} 
+		
+		
 		
 
 		return (
 
+
 			<View>
-				<View><Text style={styles.questionTracker}>{state.questionNumber + 1 }/{state.questions.length}</Text></View>
 
-				<View styles={styles.container}>
+				{!state.endOfDeck && (
+					<View>
+						<View><Text style={styles.questionTracker}>{state.questionNumber + 1 }/{state.questions.length}</Text></View>
 
-					<Text style={styles.question}>
-					{this.state.questionIsShown? question : answer}
-					</Text>
-				
-					<CustomButton onPress={()=>this.handleQuestionAnswerFlip()} style={styles.flipper}>
-					{ this.state.questionIsShown? "See Answer" : "See Question" }
-					</CustomButton>
-				
-					 <CustomButton onPress={()=>this.handleCorrectPress()}style={styles.correctButton}>Correct</CustomButton>
-					 <CustomButton onPress={()=>this.handleIncorrectPress()}style={styles.incorrectButton}>Incorrect</CustomButton>
+						<View styles={styles.container}>
 
-					
+							<Text style={styles.question}>
+							{this.state.questionIsShown? question : answer}
+							</Text>
+						
+							<CustomButton onPress={()=>this.handleQuestionAnswerFlip()} style={styles.flipper}>
+							{ this.state.questionIsShown? "See Answer" : "See Question" }
+							</CustomButton>
+						
+							 <CustomButton onPress={()=>this.handleCorrectPress()}style={styles.correctButton}>Correct</CustomButton>
+							 <CustomButton onPress={()=>this.handleIncorrectPress()}style={styles.incorrectButton}>Incorrect</CustomButton>
+						</View>
+					</View>
+					)
+				}
 
+				{ this.state.endOfDeck && 
+					( <Text>End Of Deck!! </Text> )
 
-
-				</View>
+				}
+		
 			</View>
 		)
 

@@ -155,6 +155,14 @@ export default class QuizView extends Component {
 					( 
 
 						<View>
+
+							<View>
+								Great job! You got 
+								<Text style={{color:blue}}> {state.correctAnswers} </Text> 
+								of 
+								<Text style={{color:blue}}> {state.questions.length} </Text> 
+								correct. 
+							</View>
 							<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
 						
 						   	<CustomButton>Return to Deck</CustomButton>

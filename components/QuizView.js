@@ -28,7 +28,7 @@ export default class QuizView extends Component {
       		],
 
 			questionNumber:0,
-			questionIsShown:false,
+			questionIsShown:true,
 			correctAnswers:0,
 			endOfDeck:false
 		}
@@ -66,7 +66,8 @@ export default class QuizView extends Component {
 
 				return {
 				correctAnswers:++prevState.correctAnswers,
-				endOfDeck:true
+				endOfDeck:true,
+				questionIsShown:true
 
 				}
 
@@ -76,7 +77,8 @@ export default class QuizView extends Component {
 				return {
 
 				questionNumber:updatedQuestionNumber,
-				correctAnswers:++prevState.correctAnswers
+				correctAnswers:++prevState.correctAnswers,
+				questionIsShown:true
 				}
 			}
 
@@ -101,7 +103,8 @@ export default class QuizView extends Component {
 		{
 			questionNumber:0,
 			correctAnswers:0,
-			questionIsShown:true
+			questionIsShown:true,
+			endOfDeck:false
 		}
 
 			)
@@ -141,8 +144,8 @@ export default class QuizView extends Component {
 							{ this.state.questionIsShown? "See Answer" : "See Question" }
 							</CustomButton>
 						
-							 <CustomButton onPress={()=>this.handleCorrectPress()}style={styles.correctButton}>Correct</CustomButton>
-							 <CustomButton onPress={()=>this.handleIncorrectPress()}style={styles.incorrectButton}>Incorrect</CustomButton>
+							 <CustomButton onPress={()=>this.handleCorrectPress()} style={styles.correctButton}>Correct</CustomButton>
+							 <CustomButton onPress={()=>this.handleIncorrectPress()} style={styles.incorrectButton}>Incorrect</CustomButton>
 						</View>
 					</View>
 					)
@@ -152,7 +155,8 @@ export default class QuizView extends Component {
 					( 
 
 						<View>
-							<CustomButton onPress={()=>this.handleRetake()}>Retake Quiz</CustomButton>
+							<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
+						
 						   	<CustomButton>Return to Deck</CustomButton>
 					   	</View>
 
@@ -207,5 +211,9 @@ const styles = StyleSheet.create({
 		color:'red',
 		fontSize:20,
 	
+	},
+
+	retakeButton:{
+		marginTop:20
 	}
 })

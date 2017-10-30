@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet, FlatList } from 'react-native'
-import { StackNavigator } from 'react-navigation'
-
-
 import { getDecks } from '../utils/api'
 import NewDeckView from './NewDeckView'
 import DeckListItem from './DeckListItem'
@@ -30,7 +27,7 @@ export default class DeckListView extends Component {
 
 		componentDidMount(){
 
-            console.log('props now test',this.props)
+            console.log('props are',this.props)
 			getDecks()
 			.then( result => {
 
@@ -55,6 +52,7 @@ export default class DeckListView extends Component {
 		
 		render(){
 
+			 console.log('props are',this.props)
 			return (
 
 
@@ -93,19 +91,6 @@ const styles = StyleSheet.create({
 })
 
 
-const Stack = StackNavigator({
 
-		DeckListView : {
-			screen: DeckListView,
-		
-		},
-
-		NewDeckView: {
-			screen:NewDeckView,
-	
-		}
-
-		
-	})
 
 

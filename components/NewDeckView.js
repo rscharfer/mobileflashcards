@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableNativeFeedback, TextInput } from 'react-native'
 import { saveDeckTitle } from  '../utils/api.js'
-import { StackNavigator } from 'react-navigation';
+
 
 
 

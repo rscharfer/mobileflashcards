@@ -1,16 +1,30 @@
 import React from 'react';
-import QuizView from './components/QuizView'
+import DeckListView from './components/DeckListView'
+
 
 
 export default class App extends React.Component {
 
 	
+
  
   render() {
 
-    return <QuizView/>
+  	
+    return <DeckListView/>
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

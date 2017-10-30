@@ -94,6 +94,19 @@ export default class QuizView extends Component {
 		})
 	}
 
+	handleRetake(){
+
+		this.setState(
+
+		{
+			questionNumber:0,
+			correctAnswers:0,
+			questionIsShown:true
+		}
+
+			)
+	}
+
 
 	render(){
 
@@ -136,7 +149,15 @@ export default class QuizView extends Component {
 				}
 
 				{ this.state.endOfDeck && 
-					( <Text>End Of Deck!! </Text> )
+					( 
+
+						<View>
+							<CustomButton onPress={()=>this.handleRetake()}>Retake Quiz</CustomButton>
+						   	<CustomButton>Return to Deck</CustomButton>
+					   	</View>
+
+
+					 )
 
 				}
 		

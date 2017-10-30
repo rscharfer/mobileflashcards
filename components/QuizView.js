@@ -58,8 +58,7 @@ export default class QuizView extends Component {
 		this.setState((prevState)=>{
 
 			const updatedQuestionNumber = ++prevState.questionNumber
-			console.log("uqn", updatedQuestionNumber)
-			console.log('len',prevState.questions.length)
+			
 
 
 			if(updatedQuestionNumber>=prevState.questions.length){
@@ -90,9 +89,32 @@ export default class QuizView extends Component {
 
 		this.setState((prevState)=>{
 
-			return{
-				questionNumber:++prevState.questionNumber
+			const updatedQuestionNumber = ++prevState.questionNumber
+
+			if(updatedQuestionNumber>=prevState.questions.length){
+
+				return {
+				endOfDeck:true,
+				questionIsShown:true
+
+				}
+
+
 			}
+
+			else{
+
+
+				return {
+
+				questionNumber:updatedQuestionNumber,
+				questionIsShown:true
+				}
+
+
+			}
+
+			
 		})
 	}
 

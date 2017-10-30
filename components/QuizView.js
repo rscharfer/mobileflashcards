@@ -118,6 +118,13 @@ export default class QuizView extends Component {
 		})
 	}
 
+	handleBackToDeck(){
+
+		// navigate back to Individual Deck View
+	}
+
+
+
 	handleRetake(){
 
 		this.setState(
@@ -187,7 +194,7 @@ export default class QuizView extends Component {
 							</View>
 							<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
 						
-						   	<CustomButton>Return to Deck</CustomButton>
+						   	<CustomButton onPress={()=>this.handleBackToDeck()}>Back to Deck</CustomButton>
 					   	</View>
 
 

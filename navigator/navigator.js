@@ -3,7 +3,6 @@ import DeckListView from '../components/DeckListView.js'
 import NewDeckView from '../components/NewDeckView'
 
 
-console.log('is tihs code being run??')
 
 export const Stack = StackNavigator({
 

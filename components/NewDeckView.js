@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableNativeFeedback, TextInput } from 'react-native'
+import { Text, View, StyleSheet, Button, TextInput } from 'react-native'
 import { saveDeckTitle } from  '../utils/api.js'
 
 
@@ -18,7 +18,7 @@ export default class NewDeckView extends Component {
 		super(props);
 
 		this.state={
-			deckName:'Flowers of South Africa',
+			deckName:'',
 
 		}
 	}
@@ -34,29 +34,53 @@ export default class NewDeckView extends Component {
 
 	render() {
 
-		console.log('new deck view rendered')
+	
 		return (
-		<View>
-			<Text>Create a New Deck</Text>
-			<Text>Name of Deck: {this.state.deckName}</Text>
+		<View style={styles.container}>
+
+			<Text style={styles.header}>What is the title of your new deck?</Text>
 
 			<TextInput
-				style={{height:40, borderColor:'gray', borderWidth:"1"}}
+				style={styles.textInputBox}
 				onChangeText={(deckName) => this.setState({deckName})}
 				value={this.state.deckName}
 			/>
-
-			<TouchableNativeFeedback
-				background={TouchableNativeFeedback.SelectableBackground()}
-				onpress={this.handlePress}
-			>
-				<View style={{width:150,height:100,backgroundColor:'red'}}>
-					<Text style={{margin:30}}>Create Deck</Text>
-				</View>
-			</TouchableNativeFeedback>
+			<View>
+				<Button
+					title="Create Deck"
+					color="blue"
+					onPress={this.handlePress}
+				/> 
+			</View>
 		</View>
 
 
 		)
 	}
 }
+
+
+const styles = StyleSheet.create({
+
+	container:{
+		justifyContent:'flex-start',
+		alignItems:'center',
+		flex:1
+	},
+
+	textInputBox:{
+		borderWidth:1,
+		borderColor:'gray',
+		height:40,
+		width:200,
+		marginBottom:20
+		
+	},
+	header:{
+
+		fontSize:40,
+		textAlign:'center'
+	},
+
+
+})

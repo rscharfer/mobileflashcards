@@ -36,7 +36,7 @@ export default class QuizView extends Component {
 
 		getDeck(this.state.deck).then(result=>{
 
-			console.log('coming back from the server',result.questions)
+			
 
 			this.setState({
 

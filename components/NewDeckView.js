@@ -21,20 +21,24 @@ export default class NewDeckView extends Component {
 			deckName:'',
 
 		}
+
+		this.handlePress = this.handlePress.bind(this)
 	}
 
 	handlePress(){
 
 		const deckname = this.state.deckName;
 		saveDeckTitle(deckname)
-		// update database
-		//  reroute
+		this.setState({
+			deckName:''
+		})
+		
 
 	}
 
 	render() {
 
-	
+		console.log('here is the state of new deck view on render',this.state)
 		return (
 		<View style={styles.container}>
 

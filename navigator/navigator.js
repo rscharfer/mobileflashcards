@@ -1,12 +1,12 @@
 import { StackNavigator } from 'react-navigation'
-import DeckListView from '../components/DeckListView.js'
+import DeckListView from '../components/DeckListView'
 import NewDeckView from '../components/NewDeckView'
 
 
 
 export const Stack = StackNavigator({
 
-		Home : {
+		DeckListView : {
 			screen: DeckListView,
 			navigationOptions: {
       			headerTitle: 'Home',

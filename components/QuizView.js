@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
-import { getDeck } from '../utils/api' 
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import CustomButton from 'react-native-button'
+
+import { getDeck } from '../utils/api' 
+
 
 
 
@@ -15,25 +17,33 @@ export default class QuizView extends Component {
 		super(props)
 		this.state = {
 
-			questions:[   
-				{
-	        		question: 'What is React?',
-	        		answer: 'A library for managing user interfaces'
-	      		},
-
-	      		{
-			        question: 'Where do you make Ajax requests in React?',
-			        answer: 'The componentDidMount lifecycle event'
-	      		}
-      		],
+			questions:[],
 
 			questionNumber:0,
 			questionIsShown:true,
 			correctAnswers:0,
-			endOfDeck:false
+			endOfDeck:false,
+			deck:'Computers',
+			
 		}
 
 	
+	}
+
+
+	componentDidMount(){
+
+
+		getDeck(this.state.deck).then(result=>{
+
+			console.log('coming back from the server',result.questions)
+
+			this.setState({
+
+				questions:result.questions
+			})
+		})
+
 	}
 
 
@@ -145,7 +155,7 @@ export default class QuizView extends Component {
 		const state = this.state;
 		let question, answer;
 
-		if (!state.endOfDeck){
+		if (!state.endOfDeck && this.state.questions.length>0 ){
 
 			question =  state.questions[state.questionNumber].question;
 			answer = state.questions[state.questionNumber].answer;
@@ -158,8 +168,13 @@ export default class QuizView extends Component {
 
 
 			<View>
+			
+				{this.state.questions.length===0 && (
 
-				{!state.endOfDeck && (
+					<ActivityIndicator/>
+				)}
+
+				{!state.endOfDeck && this.state.questions.length>0 && (
 					<View>
 						<View><Text style={styles.questionTracker}>{state.questionNumber + 1 }/{state.questions.length}</Text></View>
 
@@ -180,7 +195,7 @@ export default class QuizView extends Component {
 					)
 				}
 
-				{ this.state.endOfDeck && 
+				{ this.state.endOfDeck && this.state.questions.length>0 &&
 					( 
 
 						<View style={styles.container}>

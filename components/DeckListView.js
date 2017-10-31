@@ -27,7 +27,7 @@ export default class DeckListView extends Component {
 
 		componentDidMount(){
 
-            console.log('props are',this.props)
+          
 			getDecks()
 			.then( result => {
 
@@ -52,7 +52,7 @@ export default class DeckListView extends Component {
 		
 		render(){
 
-			 console.log('props are',this.props)
+			 
 			return (
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button, TextInput } from 'react-native'
-import { saveDeckTitle } from  '../utils/api.js'
+import { addCardToDeck } from  '../utils/api.js'
 
 
 
@@ -19,17 +19,21 @@ export default class NewDeckView extends Component {
 
 		this.state={
 			question:'What is the meaning of life?',
-			answer:'To make as much money as possible'
+			answer:'To make as much money as possible',
+			deck:'Computers'
 
 		}
+
+		this.handlePress = this.handlePress.bind(this)
 	}
 
 	handlePress(){
 
-		//const deckname = this.state.deckName;
-		//saveDeckTitle(deckname)
-		// update database
-		//  reroute
+		addCardToDeck({deck:this.state.deck, card:this.state})
+		this.setState({
+			question:'',
+			answer:''
+		})
 
 	}
 

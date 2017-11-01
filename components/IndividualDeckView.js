@@ -13,6 +13,23 @@ export default class IndividualDeckView extends Component {
 	constructor(props){
 
 		super(props)
+		this.handleAddCardClick = this.handleAddCardClick.bind(this)
+		this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
+	}
+
+
+	handleAddCardClick(){
+
+		const navigation = this.props.navigation;
+		navigation.navigate('NewQuestionView',{deck:this.props.navigation.state.params.title})
+
+	}
+
+
+	handleStartQuizClick(){
+
+		const navigation = this.props.navigation;
+		navigation.navigate('QuizView')
 	}
 
 
@@ -29,10 +46,10 @@ export default class IndividualDeckView extends Component {
 
 				<View style={styles.buttonContainer}>
 					<View style={styles.addCardButton}>
-						<Button title="Add Card" ></Button>
+						<Button title="Add Card" onPress={this.handleAddCardClick} ></Button>
 					</View>
 					<View style={styles.startQuizButton}>
-					<Button title="Start Quiz" color="purple"></Button>
+					<Button title="Start Quiz" color="purple" onPress={this.handleStartQuizClick}></Button>
 					</View>
 				</View>
 

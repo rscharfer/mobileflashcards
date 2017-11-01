@@ -56,16 +56,22 @@ export function getDeck(id){
 // returns a promis
 
 
-export function addCardToDeck({deck,card}){
+export function addCardToDeck({question,answer,deck}){
 
 
 
 	return AsyncStorage.getItem(DECKS)
 
 	.then((result)=>JSON.parse(result))
-	.then((parsedResult)=>parsedResult[deck])
+	.then((parsedResult)=>{
+		
+		
+		return parsedResult[deck]
+	})
 	.then((deck)=>{
-		deck.questions.push(card)
+		
+		deck.questions.push({question,answer})
+		console.log('deck after',deck)
 		return deck;
 	})
 	.then((updatedDeck)=>{

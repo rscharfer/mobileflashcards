@@ -18,9 +18,10 @@ export default class NewDeckView extends Component {
 		super(props);
 
 		this.state={
-			question:'What is the meaning of life?',
-			answer:'To make as much money as possible',
-			deck:'Computers'
+			question:'',
+			answer:'',
+			//
+			deck:this.props.navigation.state.params.deck
 
 		}
 
@@ -29,7 +30,8 @@ export default class NewDeckView extends Component {
 
 	handlePress(){
 
-		addCardToDeck({deck:this.state.deck, card:this.state})
+		console.log('on handle press',this.state.deck)
+		addCardToDeck(this.state)
 		this.setState({
 			question:'',
 			answer:''
@@ -49,6 +51,7 @@ export default class NewDeckView extends Component {
 				style={styles.textInputBox}
 				onChangeText={(question) => this.setState({question})}
 				value={this.state.question}
+				placeholder="What is the purpose of life?"
 			/>
 
 			<TextInput
@@ -56,6 +59,7 @@ export default class NewDeckView extends Component {
 				style={styles.textInputBox}
 				onChangeText={(answer) => this.setState({answer})}
 				value={this.state.answer}
+				placeholder="To complete as many Udacity courses as possible"
 			/>
 			<View>
 				<Button

@@ -59,7 +59,7 @@ export default class DeckListView extends Component {
 		
 					<View style={styles.container}>
 						<Text style={styles.header}>Decks</Text>
-						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
+						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
 						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView')}}/>
 					</View>
 

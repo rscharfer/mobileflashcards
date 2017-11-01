@@ -1,10 +1,14 @@
 import { StackNavigator } from 'react-navigation'
 import DeckListView from '../components/DeckListView'
 import NewDeckView from '../components/NewDeckView'
+import IndividualDeckView from '../components/IndividualDeckView'
 
 
 
 export const Stack = StackNavigator({
+
+		
+
 
 		DeckListView : {
 			screen: DeckListView,
@@ -18,7 +22,16 @@ export const Stack = StackNavigator({
 			navigationOptions: {
       			headerTitle: 'New Deck',
     },
-		}
+		},
+
+		IndividualDeck: {
+			screen:IndividualDeckView,
+			navigationOptions: {
+      			headerTitle: 'IndividualDeckView',
+    },
+		},
+
+
 
 		
 	})

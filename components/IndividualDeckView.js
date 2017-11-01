@@ -23,8 +23,8 @@ export default class IndividualDeckView extends Component {
 			<View style={styles.container}>
 
 				<View style={styles.textContainer}>
-					<Text style={styles.deckTitle}>udacicards</Text>
-					<Text style={styles.cardNumber}>3 cards</Text>
+					<Text style={styles.deckTitle}>{this.props.navigation.state.params.title}</Text>
+					<Text style={styles.cardNumber}>{this.props.navigation.state.params.noOfCards} cards</Text>
 				</View>
 
 				<View style={styles.buttonContainer}>

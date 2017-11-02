@@ -5,7 +5,7 @@ import CustomButton from 'react-native-button'
 
 
 
-export default function DeckListItem ({title, noOfCards, navigation, refresh}){
+export default function DeckListItem ({title, noOfCards, navigation, updateDeckListView}){
 
 
 
@@ -13,7 +13,7 @@ export default function DeckListItem ({title, noOfCards, navigation, refresh}){
 
 
 	
-		navigation.navigate('IndividualDeck', {title,noOfCards, refresh})
+		navigation.navigate('IndividualDeck', {title,noOfCards, updateDeckListView})
 	}
 
 	return (

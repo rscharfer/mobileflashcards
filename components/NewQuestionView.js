@@ -30,6 +30,7 @@ export default class NewQuestionView extends Component {
 
 	handlePress(){
 
+		console.log('here are the props in newQuestionView',this.props)
 		alert('card added!')
 		const updateDLV = this.props.navigation.state.params.updateDeckListView
 		const updateDVS = this.props.navigation.state.params.updateDeckViewState

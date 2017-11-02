@@ -30,11 +30,11 @@ export default class NewQuestionView extends Component {
 
 	handlePress(){
 
-		const refreshDeckList = this.props.navigation.state.params.refresh
-		const updateDeckViewState = this.props.navigation.state.params.updateDeckViewState
+		const updateDLV = this.props.navigation.state.params.updateDeckListView
+		const updateDVS = this.props.navigation.state.params.updateDeckViewState
 		addCardToDeck(this.state).then(()=>{
-			updateDeckViewState()
-			refreshDeckList()
+			updateDVS()
+			updateDLV()
 		})
 		this.setState({
 			question:'',

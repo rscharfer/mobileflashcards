@@ -21,7 +21,7 @@ export default class DeckListView extends Component {
 				decks: []
 			}
 
-			this.refresh = this.refresh.bind(this)
+			this.updateDeckListView = this.updateDeckListView.bind(this)
 
 		
 		}
@@ -30,10 +30,10 @@ export default class DeckListView extends Component {
 		componentDidMount(){
 
             
-			this.refresh()
+			this.updateDeckListView()
 		}
 
-		refresh(){
+		updateDeckListView(){
 
 				getDecks()
 				.then( result => {
@@ -73,8 +73,8 @@ export default class DeckListView extends Component {
 		
 					<View style={styles.container}>
 						<Text style={styles.header}>Decks</Text>
-						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem refresh={this.refresh} navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
-						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{refresh:this.refresh})}}/>
+						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem updateDeckListView={this.updateDeckListView} navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
+						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{updateDeckListView:this.updateDeckListView})}}/>
 					</View>
 
 			)

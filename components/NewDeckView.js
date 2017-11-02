@@ -28,9 +28,9 @@ export default class NewDeckView extends Component {
 	handlePress(){
 
 		const deckname = this.state.deckName;
-		const refreshDeckList = this.props.navigation.state.params.refresh
+		const updateDLV = this.props.navigation.state.params.updateDeckListView
 
-		saveDeckTitle(deckname).then(()=>refreshDeckList())
+		saveDeckTitle(deckname).then(()=>updateDLV())
 		this.setState({
 			deckName:''
 		})

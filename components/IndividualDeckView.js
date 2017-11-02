@@ -29,7 +29,7 @@ export default class IndividualDeckView extends Component {
 	handleAddCardClick(){
 
 		const navigation = this.props.navigation;
-		navigation.navigate('NewQuestionView',{deck:this.state.title, updateDeckViewState:this.updateDeckViewState, refresh:this.props.navigation.state.params.refresh})
+		navigation.navigate('NewQuestionView',{deck:this.state.title, updateDeckViewState:this.updateDeckViewState, updateDeckListView:this.props.navigation.state.params.updateDeckListView})
 
 	}
 
@@ -37,7 +37,7 @@ export default class IndividualDeckView extends Component {
 	handleStartQuizClick(){
 
 		const navigation = this.props.navigation;
-		navigation.navigate('QuizView')
+		navigation.navigate('QuizView',{deck:this.state.title})
 	}
 
 

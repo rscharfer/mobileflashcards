@@ -23,7 +23,7 @@ export default class QuizView extends Component {
 			questionIsShown:true,
 			correctAnswers:0,
 			endOfDeck:false,
-			deck:'Computers',
+			deck:this.props.navigation.state.params.deck,
 			
 		}
 

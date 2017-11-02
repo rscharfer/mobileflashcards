@@ -31,19 +31,24 @@ export default class DeckListView extends Component {
 			getDecks()
 			.then( result => {
 
-				const parsedResult = JSON.parse(result);
-				const deckNames = Object.keys(parsedResult);
-				const deckObjects  = [];
-				deckNames.forEach( deckName => {
-					parsedResult[deckName].key = parsedResult[deckName].title	 
-					deckObjects.push(parsedResult[deckName])
-				})
+				if (!result) {}
+				else {
 
-				this.setState({
-					decks:deckObjects
-				})
+					const parsedResult = JSON.parse(result);
+					const deckNames = Object.keys(parsedResult);
+					const deckObjects  = [];
+					deckNames.forEach( deckName => {
+						parsedResult[deckName].key = parsedResult[deckName].title	 
+						deckObjects.push(parsedResult[deckName])
+					})
 
-			} )
+					this.setState({
+						decks:deckObjects
+					})
+				}
+				
+
+			})
 		}
 
 

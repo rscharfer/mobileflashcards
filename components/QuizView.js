@@ -37,7 +37,7 @@ export default class QuizView extends Component {
 		getDeck(this.state.deck).then(result=>{
 
 			
-
+			console.log('result returned from getDeck call in QuizView',typeof result)
 			this.setState({
 
 				questions:result.questions
@@ -130,7 +130,8 @@ export default class QuizView extends Component {
 
 	handleBackToDeck(){
 
-		// navigate back to Individual Deck View
+		   const {goBack} = this.props.navigation;
+		   goBack();
 	}
 
 
@@ -178,7 +179,7 @@ export default class QuizView extends Component {
 					<View>
 						<View><Text style={styles.questionTracker}>{state.questionNumber + 1 }/{state.questions.length}</Text></View>
 
-						<View styles={styles.container}>
+						<View style={styles.container}>
 
 							<Text style={styles.question}>
 							{this.state.questionIsShown? question : answer}

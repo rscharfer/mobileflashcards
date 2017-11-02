@@ -21,7 +21,7 @@ export default class IndividualDeckView extends Component {
 	handleAddCardClick(){
 
 		const navigation = this.props.navigation;
-		navigation.navigate('NewQuestionView',{deck:this.props.navigation.state.params.title})
+		navigation.navigate('NewQuestionView',{deck:this.props.navigation.state.params.title, refresh:this.props.navigation.state.params.refresh})
 
 	}
 
@@ -34,7 +34,7 @@ export default class IndividualDeckView extends Component {
 
 
 	render(){
-
+		console.log('here are the props in IndividualDeckView',this.props)
 		return (
 
 			<View style={styles.container}>

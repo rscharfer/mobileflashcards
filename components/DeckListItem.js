@@ -5,15 +5,15 @@ import CustomButton from 'react-native-button'
 
 
 
-export default function DeckListItem ({title, noOfCards, navigation}){
+export default function DeckListItem ({title, noOfCards, navigation, refresh}){
 
 
 
 	function handlePress(){
 
 
-
-		navigation.navigate('IndividualDeck', {title,noOfCards})
+	
+		navigation.navigate('IndividualDeck', {title,noOfCards, refresh})
 	}
 
 	return (

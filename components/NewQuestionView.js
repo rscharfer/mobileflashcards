@@ -10,7 +10,7 @@ import { addCardToDeck } from  '../utils/api.js'
 
 
 
-export default class NewDeckView extends Component {
+export default class NewQuestionView extends Component {
 
 
 	constructor(props){
@@ -30,8 +30,8 @@ export default class NewDeckView extends Component {
 
 	handlePress(){
 
-		console.log('on handle press',this.state.deck)
-		addCardToDeck(this.state)
+		const refreshDeckList = this.props.navigation.state.params.refresh
+		addCardToDeck(this.state).then(()=>refreshDeckList())
 		this.setState({
 			question:'',
 			answer:''
@@ -41,7 +41,7 @@ export default class NewDeckView extends Component {
 
 	render() {
 
-	
+	    console.log('in new question view props',this.props)
 		return (
 		<View style={styles.container}>
 

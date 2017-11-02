@@ -30,20 +30,19 @@ export default class NewDeckView extends Component {
 		const deckname = this.state.deckName;
 		const refreshDeckList = this.props.navigation.state.params.refresh
 
-
-		
-	
 		saveDeckTitle(deckname).then(()=>refreshDeckList())
 		this.setState({
 			deckName:''
 		})
+
+		alert('deck added!')
 		
 
 	}
 
 	render() {
 
-		const {goBack} = this.props.navigation;
+		
 		return (
 		<View style={styles.container}>
 

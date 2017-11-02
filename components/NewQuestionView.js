@@ -30,19 +30,25 @@ export default class NewQuestionView extends Component {
 
 	handlePress(){
 
-		console.log('here are the props in newQuestionView',this.props)
-		alert('card added!')
-		const updateDLV = this.props.navigation.state.params.updateDeckListView
-		const updateDVS = this.props.navigation.state.params.updateDeckViewState
-		addCardToDeck(this.state).then(()=>{
-			updateDVS()
-			updateDLV()
-		})
-		this.setState({
-			question:'',
-			answer:''
-		})
+		if(this.state.question && this.state.answer) {
+			alert('card added!')
+			const updateDLV = this.props.navigation.state.params.updateDeckListView
+			const updateDVS = this.props.navigation.state.params.updateDeckViewState
+			addCardToDeck(this.state).then(()=>{
+				updateDVS()
+				updateDLV()
+			})
+			this.setState({
+				question:'',
+				answer:''
+			})
+		}
 
+		else{
+
+			alert('You need to enter both a question and answer')
+		}
+		
 	}
 
 
@@ -59,7 +65,7 @@ export default class NewQuestionView extends Component {
 				style={styles.textInputBox}
 				onChangeText={(question) => this.setState({question})}
 				value={this.state.question}
-				placeholder="What is the purpose of life?"
+				placeholder=" What is the color of the sky?"
 			/>
 
 			<TextInput
@@ -67,12 +73,12 @@ export default class NewQuestionView extends Component {
 				style={styles.textInputBox}
 				onChangeText={(answer) => this.setState({answer})}
 				value={this.state.answer}
-				placeholder="To complete as many Udacity courses as possible"
+				placeholder=" Blue"
 			/>
 			<View>
 				<Button
 					title="Add Question"
-					color="blue"
+					color="darkorange"
 					onPress={this.handlePress}
 				/> 
 			</View>

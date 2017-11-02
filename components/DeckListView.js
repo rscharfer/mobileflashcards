@@ -74,7 +74,7 @@ export default class DeckListView extends Component {
 					<View style={styles.container}>
 						<Text style={styles.header}>Decks</Text>
 						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem updateDeckListView={this.updateDeckListView} navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
-						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{updateDeckListView:this.updateDeckListView})}}/>
+						<Button color="darkorange" title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{updateDeckListView:this.updateDeckListView})}}/>
 					</View>
 
 			)
@@ -96,11 +96,6 @@ const styles = StyleSheet.create({
 		flex:1,
 		justifyContent:'flex-start',
 		alignItems:'center'
-	},
-
-	button:{
-
-		width:50
 	}
 })
 

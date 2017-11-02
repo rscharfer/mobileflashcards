@@ -28,14 +28,22 @@ export default class NewDeckView extends Component {
 	handlePress(){
 
 		const deckname = this.state.deckName;
-		const updateDLV = this.props.navigation.state.params.updateDeckListView
 
-		saveDeckTitle(deckname).then(()=>updateDLV())
-		this.setState({
-			deckName:''
-		})
+		if(deckname){
 
-		alert('deck added!')
+			const updateDLV = this.props.navigation.state.params.updateDeckListView
+			saveDeckTitle(deckname).then(()=>updateDLV())
+			this.setState({
+				deckName:''
+			})
+			alert('deck added!')
+		}
+
+		else{
+
+			alert('You need to add a deck')
+		}
+		
 		
 
 	}
@@ -56,7 +64,7 @@ export default class NewDeckView extends Component {
 			<View>
 				<Button
 					title="Create Deck"
-					color="blue"
+					color="darkorange"
 					onPress={this.handlePress}
 				/> 
 			</View>
@@ -88,7 +96,7 @@ const styles = StyleSheet.create({
 	},
 	header:{
 
-		fontSize:40,
+		fontSize:30,
 		textAlign:'center'
 	},
 

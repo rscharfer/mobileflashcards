@@ -37,7 +37,7 @@ export default class QuizView extends Component {
 		getDeck(this.state.deck).then(result=>{
 
 			
-			console.log('result returned from getDeck call in QuizView',typeof result)
+		
 			this.setState({
 
 				questions:result.questions
@@ -181,9 +181,11 @@ export default class QuizView extends Component {
 
 						<View style={styles.container}>
 
-							<Text style={styles.question}>
-							{this.state.questionIsShown? question : answer}
-							</Text>
+							<View style={{height:300}}>
+								<Text numberOfLines={6} style={styles.question}>
+								{this.state.questionIsShown? question : answer}
+								</Text>
+							</View>
 						
 							<CustomButton onPress={()=>this.handleQuestionAnswerFlip()} style={styles.flipper}>
 							{ this.state.questionIsShown? "See Answer" : "See Question" }
@@ -203,14 +205,14 @@ export default class QuizView extends Component {
 
 							<View style={{marginTop:20}}>
 							<Text>You correctly answered&nbsp; 
-								<Text style={{color:'blue'}}>{state.correctAnswers}&nbsp;</Text> 
+								<Text style={{color:'gray'}}>{state.correctAnswers}&nbsp;</Text> 
 								of&nbsp; 
-								<Text style={{color:'blue'}}>{state.questions.length}&nbsp;</Text>
+								<Text style={{color:'gray'}}>{state.questions.length}&nbsp;</Text>
 								questions.</Text>
 							</View>
 							<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
 						
-						   	<CustomButton onPress={()=>this.handleBackToDeck()}>Back to Deck</CustomButton>
+						   	<CustomButton onPress={()=>this.handleBackToDeck()} style={{color:'#A40000'}}>Back to Deck</CustomButton>
 					   	</View>
 
 
@@ -237,16 +239,18 @@ const styles = StyleSheet.create({
 	flipper:{
 
 		textAlign:"center",
-		color:"blue",
+		color:"gray",
 		marginBottom:20,
 		fontSize:10
 	},
 
 	question:{
 
-		fontSize:50,
+		fontSize:35,
 		margin:30,
-		textAlign:'center'
+		textAlign:'center',
+		textAlignVertical:'center'
+
 	},
 
 	questionTracker:{
@@ -255,18 +259,19 @@ const styles = StyleSheet.create({
 	},
 
 	correctButton:{
-		color:'green',
+		color:'darkorange',
 		fontSize:20,
 		
 	},
 
 	incorrectButton:{
-		color:'red',
+		color:'#A40000',
 		fontSize:20,
 	
 	},
 
 	retakeButton:{
-		marginTop:20
+		marginTop:20,
+		color:'darkorange'
 	}
 })

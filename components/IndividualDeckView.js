@@ -70,9 +70,13 @@ export default class IndividualDeckView extends Component {
 					<View style={styles.addCardButton}>
 						<Button title="Add Card" onPress={this.handleAddCardClick} ></Button>
 					</View>
+					{this.state.noOfCards>0 && (
+
 					<View style={styles.startQuizButton}>
 					<Button title="Start Quiz" color="purple" onPress={this.handleStartQuizClick}></Button>
 					</View>
+				)}
+					
 				</View>
 
 			</View>

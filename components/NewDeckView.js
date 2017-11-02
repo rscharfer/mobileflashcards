@@ -28,7 +28,12 @@ export default class NewDeckView extends Component {
 	handlePress(){
 
 		const deckname = this.state.deckName;
-		saveDeckTitle(deckname)
+		const refreshDeckList = this.props.navigation.state.params.refresh
+
+
+		
+	
+		saveDeckTitle(deckname).then(()=>refreshDeckList())
 		this.setState({
 			deckName:''
 		})
@@ -38,7 +43,7 @@ export default class NewDeckView extends Component {
 
 	render() {
 
-		console.log('here is the state of new deck view on render',this.state)
+		const {goBack} = this.props.navigation;
 		return (
 		<View style={styles.container}>
 
@@ -56,6 +61,8 @@ export default class NewDeckView extends Component {
 					onPress={this.handlePress}
 				/> 
 			</View>
+
+		
 		</View>
 
 

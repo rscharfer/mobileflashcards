@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet, FlatList } from 'react-native'
+import { Text, View, Button, StyleSheet, FlatList, KeyboardAvoidingView } from 'react-native'
 import { getDecks } from '../utils/api'
 import NewDeckView from './NewDeckView'
 import DeckListItem from './DeckListItem'
@@ -21,34 +21,43 @@ export default class DeckListView extends Component {
 				decks: []
 			}
 
+			this.refresh = this.refresh.bind(this)
+
 		
 		}
 
 
 		componentDidMount(){
 
-          
-			getDecks()
-			.then( result => {
+            
+			this.refresh()
+		}
 
-				if (!result) {}
-				else {
+		refresh(){
 
-					const parsedResult = JSON.parse(result);
-					const deckNames = Object.keys(parsedResult);
-					const deckObjects  = [];
-					deckNames.forEach( deckName => {
-						parsedResult[deckName].key = parsedResult[deckName].title	 
-						deckObjects.push(parsedResult[deckName])
-					})
+				getDecks()
+				.then( result => {
 
-					this.setState({
-						decks:deckObjects
-					})
-				}
-				
+					if (!result) {}
+					else {
 
-			})
+						const parsedResult = JSON.parse(result);
+						const deckNames = Object.keys(parsedResult);
+						const deckObjects  = [];
+						deckNames.forEach( deckName => {
+							parsedResult[deckName].key = parsedResult[deckName].title	 
+							deckObjects.push(parsedResult[deckName])
+						})
+
+						this.setState({
+							decks:deckObjects
+						})
+
+					}
+					
+
+				})
+
 		}
 
 
@@ -57,7 +66,7 @@ export default class DeckListView extends Component {
 		
 		render(){
 
-			 
+		
 			return (
 
 
@@ -65,7 +74,7 @@ export default class DeckListView extends Component {
 					<View style={styles.container}>
 						<Text style={styles.header}>Decks</Text>
 						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />
-						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView')}}/>
+						<Button styles={styles.button} title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{refresh:this.refresh})}}/>
 					</View>
 
 			)

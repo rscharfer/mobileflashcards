@@ -11,7 +11,7 @@ const DECKS = "DECKS";
 export function saveDeckTitle(title){
 
 
-	AsyncStorage.mergeItem( DECKS , JSON.stringify({
+	return AsyncStorage.mergeItem( DECKS , JSON.stringify({
 		[title]:{
 			title,
 			questions:[]

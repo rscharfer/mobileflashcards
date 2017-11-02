@@ -31,7 +31,11 @@ export default class NewQuestionView extends Component {
 	handlePress(){
 
 		const refreshDeckList = this.props.navigation.state.params.refresh
-		addCardToDeck(this.state).then(()=>refreshDeckList())
+		const updateDeckViewState = this.props.navigation.state.params.updateDeckViewState
+		addCardToDeck(this.state).then(()=>{
+			updateDeckViewState()
+			refreshDeckList()
+		})
 		this.setState({
 			question:'',
 			answer:''
@@ -39,9 +43,11 @@ export default class NewQuestionView extends Component {
 
 	}
 
+
+
 	render() {
 
-	    console.log('in new question view props',this.props)
+	  
 		return (
 		<View style={styles.container}>
 

@@ -13,20 +13,23 @@ export default class IndividualDeckView extends Component {
 	constructor(props){
 
 		super(props)
-		this.handleAddCardClick = this.handleAddCardClick.bind(this)
-		this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
+
 		this.state = {
 			// set initial state
 			title: this.props.navigation.state.params.title,
 			noOfCards : this.props.navigation.state.params.noOfCards
 		}
+
+		this.handleAddCardClick = this.handleAddCardClick.bind(this)
+		this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
+		this.updateDeckViewState = this.updateDeckViewState.bind(this)
 	}
 
 
 	handleAddCardClick(){
 
 		const navigation = this.props.navigation;
-		navigation.navigate('NewQuestionView',{deck:this.state.title, refresh:this.props.navigation.state.params.refresh})
+		navigation.navigate('NewQuestionView',{deck:this.state.title, updateDeckViewState:this.updateDeckViewState, refresh:this.props.navigation.state.params.refresh})
 
 	}
 
@@ -38,8 +41,22 @@ export default class IndividualDeckView extends Component {
 	}
 
 
+	updateDeckViewState(){
+
+		getDeck(this.state.title).then(result=>{
+
+			this.setState({
+				noOfCards:result.questions.length
+			})
+		})
+
+	}
+
+
+
+
 	render(){
-		console.log('here are the props in IndividualDeckView',this.props)
+	
 		return (
 
 			<View style={styles.container}>

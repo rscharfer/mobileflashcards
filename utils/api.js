@@ -71,7 +71,7 @@ export function addCardToDeck({question,answer,deck}){
 	.then((deck)=>{
 		
 		deck.questions.push({question,answer})
-		console.log('deck after',deck)
+	
 		return deck;
 	})
 	.then((updatedDeck)=>{

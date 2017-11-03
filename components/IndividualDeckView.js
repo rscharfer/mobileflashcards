@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { getDeck } from '../utils/api' 
 import CustomButton from 'react-native-button'
+import { clearLocalNotification, setLocalNotification} from '../utils/localNotifications'
 
 
 
@@ -38,6 +39,7 @@ export default class IndividualDeckView extends Component {
 
 		const navigation = this.props.navigation;
 		navigation.navigate('QuizView',{deck:this.state.title})
+		clearLocalNotification().then(setLocalNotification)
 	}
 
 

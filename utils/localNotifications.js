@@ -3,7 +3,7 @@ import { Notifications, Permissions } from 'expo'
 
 
 
-const NOTIFICATIONKEY = 'NOTIFICATIONS_APP_RYAN'
+const NOTIFICATION_KEY = 'NOTIFICATIONS_APP_RYAN'
 
 
 
@@ -11,53 +11,45 @@ const NOTIFICATIONKEY = 'NOTIFICATIONS_APP_RYAN'
 
 
 
-export function setLocalNotifcation(){
+export function setLocalNotification () {
 
-	AsyncStorage.getItem(NOTIFICATIONKEY)
+  AsyncStorage.getItem(NOTIFICATION_KEY)
+  
+    .then(JSON.parse)
+    .then((data) => {
+      if (data === null) {
+        Permissions.askAsync(Permissions.NOTIFICATIONS)
+          .then(({ status }) => {
+            if (status === 'granted') {
+              Notifications.cancelAllScheduledNotificationsAsync()
 
-	.then(JSON.parse)
+              let tomorrow = new Date()
+              tomorrow.setDate(tomorrow.getDate() + 1)
+              tomorrow.setHours(20)
+              tomorrow.setMinutes(0)
 
-	.then((data)=>{
+              Notifications.scheduleLocalNotificationAsync(
+                createNotification(),
+                {
+                  time: tomorrow,
+                  repeat: 'day',
+                }
+              )
 
-		if(data===null) {
-			Permissions.askAsync(Permissions.NOTIFICATIONS)
-
-			then(({ status })=> {
-
-				if (status === "granted"){
-
-					Notifications.cancelAllScheduledNotificationsAsync()
-					let tomorrow = new Date();
-					tomorrow.setDate(tomorrow.getDate()*1)
-					tomorrow.setHours(20)
-					tomorrow.setMinutes(0)
-
-					Notifications.scheduleLocalNotificationsAysnc(
-
-						createNotification(),
-						{
-							time:tomorrow,
-							repeat:'day',
-						}
-					)
-
-					AsyncStorage.setItem(NOTIFICATIONKEY, JSON.stringify(true))
-				}
-
-
-			})
-		}
-	})
+              AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
+            }
+          })
+      }
+    })
 }
 
 
 
-export function clearLocalNotifications(){
+export function clearLocalNotification () {
 
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
 
-	return AsyncStorage.removeItem(NOTIFICATIONKEY).
-
-	then(Notifications.cancelAllScheduledNotificationsAsync)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
 

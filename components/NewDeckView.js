@@ -36,7 +36,7 @@ export default class NewDeckView extends Component {
 			this.setState({
 				deckName:''
 			})
-			alert('deck added!')
+			this.props.navigation.goBack();
 		}
 
 		else{

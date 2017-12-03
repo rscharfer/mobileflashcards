@@ -5,18 +5,16 @@ import { getDeck } from '../utils/api'
 
 export default class QuizView extends Component {
 
-	constructor(props){
-
-		super(props)
-		this.state = {
+	
+	state = {
 			questions:[],
 			questionNumber:0,
 			questionIsShown:true,
 			correctAnswers:0,
 			endOfDeck:false,
 			deck:this.props.navigation.state.params.deck,
-		}
 	}
+	
 
 	
 

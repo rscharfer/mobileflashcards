@@ -26,8 +26,8 @@ export default class DeckListView extends Component {
 		updateDeckListView = () => {
 				getDecks()
 				.then( result => {
-					if (!result) {}
-					else {
+					
+					if(result) {
 
 						const parsedResult = JSON.parse(result);
 						const deckNames = Object.keys(parsedResult);

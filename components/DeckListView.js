@@ -11,11 +11,9 @@ import DeckListItem from './DeckListItem'
 
 export default class DeckListView extends Component {
 
-		constructor(props){
-			super(props)
-			this.state = {
-				decks: []
-			}
+		
+		state = {
+			decks : []
 		}
 
 

@@ -13,19 +13,14 @@ import { saveDeckTitle } from  '../utils/api.js'
 export default class NewDeckView extends Component {
 
 
-	constructor(props){
 
-		super(props);
 
-		this.state={
-			deckName:'',
+	state= { deckName:'', }
 
-		}
+	
+	
 
-		this.handlePress = this.handlePress.bind(this)
-	}
-
-	handlePress(){
+	handlePress = () => {
 
 		const deckname = this.state.deckName;
 

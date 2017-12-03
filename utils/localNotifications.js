@@ -1,22 +1,13 @@
 import { AsyncStorage } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 
-
-
 const NOTIFICATION_KEY = 'NOTIFICATIONS_APP_RYAN'
-
-
-
-
-
-
 
 export function setLocalNotification () {
 
   AsyncStorage.getItem(NOTIFICATION_KEY)
-  
     .then(JSON.parse)
-    .then((data) => {
+    .then( data => {
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
@@ -29,13 +20,12 @@ export function setLocalNotification () {
               tomorrow.setMinutes(0)
 
               Notifications.scheduleLocalNotificationAsync(
-                createNotification(),
+                notification,
                 {
                   time: tomorrow,
                   repeat: 'day',
                 }
               )
-
               AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
             }
           })
@@ -53,18 +43,15 @@ export function clearLocalNotification () {
 }
 
 
-function createNotification(){
+const notification = {
 
+    title: "Quiz completed?",
+    body: "Don't forget to complete your quiz for the day?",
 
-	return {
-
-		title: "Quiz completed?",
-		body: "Don't forget to complete your quiz for the day?",
-
-		android:{
-			sound:true,
-			priority:'high',
-			sticky:false,
-			vibrate:true
-		}
-}}
+    android:{
+      sound:true,
+      priority:'high',
+      sticky:false,
+      vibrate:true
+    }
+  }

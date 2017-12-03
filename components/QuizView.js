@@ -8,7 +8,6 @@ export default class QuizView extends Component {
 	constructor(props){
 
 		super(props)
-
 		this.state = {
 			questions:[],
 			questionNumber:0,
@@ -19,6 +18,7 @@ export default class QuizView extends Component {
 		}
 	}
 
+	
 
 	componentDidMount(){
 
@@ -29,7 +29,7 @@ export default class QuizView extends Component {
 		})
 	}
 
-	handleQuestionAnswerFlip(){
+	handleQuestionAnswerFlip = () => {
 
 		this.setState((prevState)=>{
 			return {
@@ -38,7 +38,7 @@ export default class QuizView extends Component {
 		})
 	}
 
-	handleCorrectPress(){
+	handleCorrectPress = () => {
 
 		this.setState((prevState)=>{
 
@@ -61,7 +61,7 @@ export default class QuizView extends Component {
 		})
 	}
 
-	handleIncorrectPress(){
+	handleIncorrectPress = () => {
 
 		this.setState((prevState)=>{
 			const updatedQuestionNumber = ++prevState.questionNumber
@@ -82,12 +82,12 @@ export default class QuizView extends Component {
 		})
 	}
 
-	handleBackToDeck(){
+	handleBackToDeck = () => {
 		   const {goBack} = this.props.navigation;
 		   goBack();
 	}
 
-	handleRetake(){
+	handleRetake = () => {
 		this.setState(
 
 			{
@@ -113,7 +113,7 @@ export default class QuizView extends Component {
 		} 
 		
 		return (
-			
+
 			<View>
 			
 				{this.state.questions.length===0 && (
@@ -133,12 +133,12 @@ export default class QuizView extends Component {
 								</Text>
 							</View>
 						
-							<CustomButton onPress={()=>this.handleQuestionAnswerFlip()} style={styles.flipper}>
+							<CustomButton onPress={this.handleQuestionAnswerFlip()} style={styles.flipper}>
 							{ this.state.questionIsShown? "See Answer" : "See Question" }
 							</CustomButton>
 						
-							 <CustomButton onPress={()=>this.handleCorrectPress()} style={styles.correctButton}>Correct</CustomButton>
-							 <CustomButton onPress={()=>this.handleIncorrectPress()} style={styles.incorrectButton}>Incorrect</CustomButton>
+							 <CustomButton onPress={this.handleCorrectPress()} style={styles.correctButton}>Correct</CustomButton>
+							 <CustomButton onPress={this.handleIncorrectPress()} style={styles.incorrectButton}>Incorrect</CustomButton>
 						</View>
 					</View>
 				)}
@@ -154,9 +154,9 @@ export default class QuizView extends Component {
 							<Text style={{color:'gray'}}>{state.questions.length}&nbsp;</Text>
 							questions.</Text>
 						</View>
-						<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
+						<CustomButton onPress={this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
 					
-					   	<CustomButton onPress={()=>this.handleBackToDeck()} style={{color:'#A40000'}}>Back to Deck</CustomButton>
+					   	<CustomButton onPress={this.handleBackToDeck()} style={{color:'#A40000'}}>Back to Deck</CustomButton>
 				   	</View>
 
 

@@ -9,28 +9,25 @@ import NewQuestionView from '../components/NewQuestionView'
 
 export const Stack = StackNavigator({
 
-		
-
-
 		DeckListView : {
 			screen: DeckListView,
 			navigationOptions: {
       			headerTitle: 'Home',
-    },
+    		},
 		},
 
 		NewDeckView: {
 			screen:NewDeckView,
 			navigationOptions: {
       			headerTitle: 'New Deck',
-    },
+    		},
 		},
 
 		IndividualDeck: {
 			screen:IndividualDeckView,
 			navigationOptions: {
       			headerTitle: 'IndividualDeckView',
-    },
+    		},
 		},
 
 
@@ -38,19 +35,15 @@ export const Stack = StackNavigator({
 			screen:QuizView,
 			navigationOptions: {
       			headerTitle: 'QuizView',
-    },
+    		},
 		},
 
 		NewQuestionView: {
 			screen:NewQuestionView,
 			navigationOptions: {
       			headerTitle: 'NewQuestionView',
-    },
+    		},
 		},
-
-
-
-		
 	})
 
 

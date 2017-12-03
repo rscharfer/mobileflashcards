@@ -7,17 +7,14 @@ export default class QuizView extends Component {
 
 	
 	state = {
-			questions:[],
-			questionNumber:0,
-			questionIsShown:true,
-			correctAnswers:0,
-			endOfDeck:false,
-			deck:this.props.navigation.state.params.deck,
+		questions:[],
+		questionNumber:0,
+		questionIsShown:true,
+		correctAnswers:0,
+		endOfDeck:false,
+		deck:this.props.navigation.state.params.deck,
 	}
 	
-
-	
-
 	componentDidMount(){
 
 		getDeck(this.state.deck).then(result=>{

@@ -21,7 +21,7 @@ export default class DeckListView extends Component {
 				decks: []
 			}
 
-			this.updateDeckListView = this.updateDeckListView.bind(this)
+			
 
 		
 		}
@@ -33,7 +33,7 @@ export default class DeckListView extends Component {
 			this.updateDeckListView()
 		}
 
-		updateDeckListView(){
+		updateDeckListView = () => {
 
 				getDecks()
 				.then( result => {

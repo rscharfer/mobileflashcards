@@ -9,25 +9,16 @@ import { clearLocalNotification, setLocalNotification} from '../utils/localNotif
 export default class IndividualDeckView extends Component {
 
 
-
-
-	constructor(props){
-
-		super(props)
-
-		this.state = {
-			// set initial state
-			title: this.props.navigation.state.params.title,
-			noOfCards : this.props.navigation.state.params.noOfCards
-		}
-
-		this.handleAddCardClick = this.handleAddCardClick.bind(this)
-		this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
-		this.updateDeckViewState = this.updateDeckViewState.bind(this)
+	state = {
+		title: this.props.navigation.state.params.title,
+		noOfCards : this.props.navigation.state.params.noOfCards
 	}
 
+	
+	
 
-	handleAddCardClick(){
+
+	handleAddCardClick = () => {
 
 		const navigation = this.props.navigation;
 		navigation.navigate('NewQuestionView',{deck:this.state.title, updateDeckViewState:this.updateDeckViewState, updateDeckListView:this.props.navigation.state.params.updateDeckListView})
@@ -35,7 +26,7 @@ export default class IndividualDeckView extends Component {
 	}
 
 
-	handleStartQuizClick(){
+	handleStartQuizClick = () => {
 
 		const navigation = this.props.navigation;
 		navigation.navigate('QuizView',{deck:this.state.title})
@@ -43,7 +34,7 @@ export default class IndividualDeckView extends Component {
 	}
 
 
-	updateDeckViewState(){
+	updateDeckViewState = () => {
 
 		getDeck(this.state.title).then(result=>{
 
@@ -51,7 +42,6 @@ export default class IndividualDeckView extends Component {
 				noOfCards:result.questions.length
 			})
 		})
-
 	}
 
 
@@ -83,9 +73,7 @@ export default class IndividualDeckView extends Component {
 
 			</View>
 
-
-
-			)
+		)	
 	}
 }
 
@@ -94,14 +82,12 @@ const styles = StyleSheet.create({
 
 
 	container:{
-
 		justifyContent:'flex-end',
 		alignItems:'center',
 
 	},
 
 	textContainer:{
-
 		marginBottom:20,
 	},
 
@@ -110,7 +96,6 @@ const styles = StyleSheet.create({
 	},
 
 	deckTitle:{
-
 		fontSize:40,
 		textAlign:'center',
 		marginBottom:10
@@ -118,7 +103,6 @@ const styles = StyleSheet.create({
 	},
 
 	cardNumber:{
-
 		fontSize:20,
 		textAlign:'center',
 		marginTop:10,
@@ -126,15 +110,8 @@ const styles = StyleSheet.create({
 	},
 
 	addCardButton:{
-
 		marginBottom:20
 
 	},
-
-	startQuizButton:{
-
-	
-	}
-
 
 })

@@ -13,20 +13,18 @@ import { addCardToDeck } from  '../utils/api.js'
 export default class NewQuestionView extends Component {
 
 
-	constructor(props){
+	
 
-		super(props);
+	state = {
+		question:'',
+		answer:'',
+		//
+		deck:this.props.navigation.state.params.deck
 
-		this.state={
-			question:'',
-			answer:'',
-			//
-			deck:this.props.navigation.state.params.deck
-
-		}
+	}
 
 		
-	}
+	
 
 	handlePress = () => {
 

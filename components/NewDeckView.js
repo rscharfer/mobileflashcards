@@ -15,7 +15,7 @@ export default class NewDeckView extends Component {
 
 
 
-	state= { deckName:'', }
+	state= { deckName:'' }
 
 	
 	

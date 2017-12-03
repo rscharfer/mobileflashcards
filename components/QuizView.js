@@ -1,63 +1,38 @@
 import React, { Component } from 'react'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import CustomButton from 'react-native-button'
-
 import { getDeck } from '../utils/api' 
-
-
-
 
 export default class QuizView extends Component {
 
-
-
-	// which deck will be on the props
 	constructor(props){
 
 		super(props)
+
 		this.state = {
-
 			questions:[],
-
 			questionNumber:0,
 			questionIsShown:true,
 			correctAnswers:0,
 			endOfDeck:false,
 			deck:this.props.navigation.state.params.deck,
-			
 		}
-
-	
 	}
 
 
 	componentDidMount(){
 
-
 		getDeck(this.state.deck).then(result=>{
-
-			
-		
 			this.setState({
-
 				questions:result.questions
 			})
 		})
-
 	}
-
-
-
-
-
-
 
 	handleQuestionAnswerFlip(){
 
 		this.setState((prevState)=>{
-
 			return {
-
 				questionIsShown:!prevState.questionIsShown
 			}
 		})
@@ -68,86 +43,61 @@ export default class QuizView extends Component {
 		this.setState((prevState)=>{
 
 			const updatedQuestionNumber = ++prevState.questionNumber
-			
-
-
 			if(updatedQuestionNumber>=prevState.questions.length){
-
 				return {
 				correctAnswers:++prevState.correctAnswers,
 				endOfDeck:true,
 				questionIsShown:true
-
 				}
-
 			}
 
 			else {
 				return {
-
 				questionNumber:updatedQuestionNumber,
 				correctAnswers:++prevState.correctAnswers,
 				questionIsShown:true
 				}
 			}
-
-			
 		})
 	}
 
 	handleIncorrectPress(){
 
 		this.setState((prevState)=>{
-
 			const updatedQuestionNumber = ++prevState.questionNumber
 
 			if(updatedQuestionNumber>=prevState.questions.length){
-
 				return {
 				endOfDeck:true,
 				questionIsShown:true
-
 				}
-
-
 			}
 
 			else{
-
-
 				return {
-
 				questionNumber:updatedQuestionNumber,
 				questionIsShown:true
 				}
-
-
 			}
-
-			
 		})
 	}
 
 	handleBackToDeck(){
-
 		   const {goBack} = this.props.navigation;
 		   goBack();
 	}
 
-
-
 	handleRetake(){
-
 		this.setState(
 
-		{
-			questionNumber:0,
-			correctAnswers:0,
-			questionIsShown:true,
-			endOfDeck:false
-		}
+			{
+				questionNumber:0,
+				correctAnswers:0,
+				questionIsShown:true,
+				endOfDeck:false
+			}
 
-			)
+		)
 	}
 
 
@@ -162,12 +112,8 @@ export default class QuizView extends Component {
 			answer = state.questions[state.questionNumber].answer;
 		} 
 		
-		
-		
-
 		return (
-
-
+			
 			<View>
 			
 				{this.state.questions.length===0 && (
@@ -195,36 +141,30 @@ export default class QuizView extends Component {
 							 <CustomButton onPress={()=>this.handleIncorrectPress()} style={styles.incorrectButton}>Incorrect</CustomButton>
 						</View>
 					</View>
-					)
-				}
+				)}
 
-				{ this.state.endOfDeck && this.state.questions.length>0 &&
-					( 
+				{this.state.endOfDeck && this.state.questions.length>0 && ( 
 
-						<View style={styles.container}>
+					<View style={styles.container}>
 
-							<View style={{marginTop:20}}>
-							<Text>You correctly answered&nbsp; 
-								<Text style={{color:'gray'}}>{state.correctAnswers}&nbsp;</Text> 
-								of&nbsp; 
-								<Text style={{color:'gray'}}>{state.questions.length}&nbsp;</Text>
-								questions.</Text>
-							</View>
-							<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
-						
-						   	<CustomButton onPress={()=>this.handleBackToDeck()} style={{color:'#A40000'}}>Back to Deck</CustomButton>
-					   	</View>
+						<View style={{marginTop:20}}>
+						<Text>You correctly answered&nbsp; 
+							<Text style={{color:'gray'}}>{state.correctAnswers}&nbsp;</Text> 
+							of&nbsp; 
+							<Text style={{color:'gray'}}>{state.questions.length}&nbsp;</Text>
+							questions.</Text>
+						</View>
+						<CustomButton onPress={()=>this.handleRetake()} style={styles.retakeButton}>Retake Quiz</CustomButton>
+					
+					   	<CustomButton onPress={()=>this.handleBackToDeck()} style={{color:'#A40000'}}>Back to Deck</CustomButton>
+				   	</View>
 
 
-					 )
-
-				}
+				)}
 		
 			</View>
 		)
-
 	}
-
 }
 
 const styles = StyleSheet.create({

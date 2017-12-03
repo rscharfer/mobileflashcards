@@ -5,19 +5,14 @@ import { setLocalNotification } from './utils/localNotifications.js'
 
 
 export default class App extends React.Component {
-
 	
- componentDidMount(){
-
- 	setLocalNotification();
-
- }
- 
-  render() {
-
-  	
-    return <Stack/>
-  }
+	 componentDidMount(){
+	 	setLocalNotification();
+	 }
+	 
+	 render() {  	
+	    return <Stack/>
+	 }
 }
 
 

@@ -12,32 +12,20 @@ import DeckListItem from './DeckListItem'
 export default class DeckListView extends Component {
 
 		constructor(props){
-
-
 			super(props)
-
 			this.state = {
-
 				decks: []
 			}
-
-			
-
-		
 		}
 
 
 		componentDidMount(){
-
-            
 			this.updateDeckListView()
 		}
 
 		updateDeckListView = () => {
-
 				getDecks()
 				.then( result => {
-
 					if (!result) {}
 					else {
 
@@ -48,29 +36,16 @@ export default class DeckListView extends Component {
 							parsedResult[deckName].key = parsedResult[deckName].title	 
 							deckObjects.push(parsedResult[deckName])
 						})
-
 						this.setState({
 							decks:deckObjects
 						})
-
 					}
-					
-
 				})
 
 		}
-
-
 	
-
-		
 		render(){
-
-		
 			return (
-
-
-		
 					<View style={styles.container}>
 						<Text style={styles.header}>Decks</Text>
 						<FlatList data={this.state.decks} renderItem={({item})=><DeckListItem updateDeckListView={this.updateDeckListView} navigation={this.props.navigation} title={item.title} noOfCards={item.questions?item.questions.length:0}/>} />

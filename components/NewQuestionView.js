@@ -25,10 +25,10 @@ export default class NewQuestionView extends Component {
 
 		}
 
-		this.handlePress = this.handlePress.bind(this)
+		
 	}
 
-	handlePress(){
+	handlePress = () => {
 
 		if(this.state.question && this.state.answer) {
 			alert('card added!')

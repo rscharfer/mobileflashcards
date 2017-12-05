@@ -1,9 +1,8 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import CustomButton from 'react-native-button'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
+// inspired by https://stackoverflow.com/questions/38215422/text-wrap-with-chevron-on-right-in-react-native-listview-item-renderer
 
 
 export default function DeckListItem ({title, noOfCards, navigation, updateDeckListView}){
@@ -11,25 +10,27 @@ export default function DeckListItem ({title, noOfCards, navigation, updateDeckL
 
 
 	function handlePress(){
-		navigation.navigate('IndividualDeck', {title,noOfCards, updateDeckListView})
+		navigation.navigate('IndividualDeck', {title, noOfCards, updateDeckListView})
 	}
 
 	return (
-		<View style={styles.container} onPress={()=>handlePress()}>
+	 <TouchableOpacity  onPress={handlePress}>
+		<View style={styles.container}>
 			<View>
-				<Text style={{fontSize:18, color:'#A40000'}}>{title}</Text>
-				<Text style={{fontSize:12}}>{noOfCards}</Text>
+				<Text style={styles.title}>{title}</Text>
+				<Text style={styles.cardNumber}>{noOfCards} cards</Text>
 			</View>
-			<View>
-				<Icon name="chevron-right" size={15}/>
+			<View style={styles.chevron}>
+				<Icon name="chevron-right" size={25}/>
 			</View>
 		</View>
+	 </TouchableOpacity >
 
 	)
 }
 
 
-// inspired by https://stackoverflow.com/questions/38215422/text-wrap-with-chevron-on-right-in-react-native-listview-item-renderer
+
 
 const styles = StyleSheet.create({
 
@@ -38,6 +39,27 @@ const styles = StyleSheet.create({
 
 		
 		flexDirection:'row',
-		justifyContent:'space-between'
+		justifyContent:'space-between',
+		padding:15,
+		borderBottomColor:'darkorange',
+		borderBottomWidth:1
+	},
+
+	title:{
+
+		fontSize:20,
+		color:'darkorange'
+	},
+
+	cardNumber:{
+		fontSize:12,
+		color:'gray'
+	},
+
+	chevron:{
+		flexDirection:'column',
+		justifyContent:'center'
 	}
+
+
 })

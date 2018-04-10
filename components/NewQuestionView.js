@@ -2,32 +2,13 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button, TextInput } from 'react-native'
 import { addCardToDeck } from  '../utils/api.js'
 
-
-
-
-
-
-
-
-
 export default class NewQuestionView extends Component {
-
-
-	
-
 	state = {
 		question:'',
 		answer:'',
-		//
 		deck:this.props.navigation.state.params.deck
-
 	}
-
-		
-	
-
 	handlePress = () => {
-
 		if(this.state.question && this.state.answer) {
 			alert('card added!')
 			const updateDLV = this.props.navigation.state.params.updateDeckListView
@@ -41,33 +22,20 @@ export default class NewQuestionView extends Component {
 				answer:''
 			})
 		}
-
 		else{
-
 			alert('You need to enter both a question and answer')
 		}
-		
 	}
-
-
-
 	render() {
-
-	  
 		return (
 		<View style={styles.container}>
-
-
 			<TextInput
-		
 				style={styles.textInputBox}
 				onChangeText={(question) => this.setState({question})}
 				value={this.state.question}
 				placeholder=" What is the color of the sky?"
 			/>
-
 			<TextInput
-				
 				style={styles.textInputBox}
 				onChangeText={(answer) => this.setState({answer})}
 				value={this.state.answer}
@@ -81,31 +49,22 @@ export default class NewQuestionView extends Component {
 				/> 
 			</View>
 		</View>
-
-
 		)
 	}
 }
 
-
 const styles = StyleSheet.create({
-
 	container:{
 		justifyContent:'flex-start',
 		alignItems:'center',
 		flex:1,
 		marginTop:30
 	},
-
 	textInputBox:{
 		borderWidth:1,
 		borderColor:'gray',
 		height:40,
 		width:200,
 		marginBottom:20
-		
 	},
-
-
-
 })

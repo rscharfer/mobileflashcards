@@ -12,12 +12,10 @@ export function setLocalNotification () {
           .then(({ status }) => {
             if (status === 'granted') {
               Notifications.cancelAllScheduledNotificationsAsync()
-
               let tomorrow = new Date()
               tomorrow.setDate(tomorrow.getDate() + 1)
               tomorrow.setHours(20)
               tomorrow.setMinutes(0)
-
               Notifications.scheduleLocalNotificationAsync(
                 notification,
                 {
@@ -34,15 +32,12 @@ export function setLocalNotification () {
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
-
     .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
 const notification = {
-
   title: 'Quiz completed?',
   body: "Don't forget to complete your quiz for the day?",
-
   android: {
     sound: true,
     priority: 'high',

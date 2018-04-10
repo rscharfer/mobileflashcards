@@ -17,18 +17,16 @@ export function getDecks () {
 
 export function getDeck (id) {
   return AsyncStorage.getItem(DECKS)
-
 	.then(result => {
   return JSON.parse(result)
 })
 	.then(parsedResult => {
   return parsedResult[id]
-})
+  })
 }
 
 export function addCardToDeck ({question, answer, deck}) {
   return AsyncStorage.getItem(DECKS)
-
 	.then((result) => JSON.parse(result))
 	.then((parsedResult) => {
   return parsedResult[deck]
@@ -37,8 +35,7 @@ export function addCardToDeck ({question, answer, deck}) {
   deck.questions.push({question, answer})
   return deck
 })
-
 	.then((updatedDeck) => {
   AsyncStorage.mergeItem(DECKS, JSON.stringify({[deck]: updatedDeck}))
-})
+  })
 }

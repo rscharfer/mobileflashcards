@@ -10,35 +10,31 @@ export const Stack = StackNavigator({
   DeckListView: {
     screen: DeckListView,
     navigationOptions: {
-      			headerTitle: 'Home'
-    		}
+      headerTitle: 'Home'
+    }
   },
-
   NewDeckView: {
     screen: NewDeckView,
     navigationOptions: {
-      			headerTitle: 'New Deck'
-    		}
+      headerTitle: 'New Deck'
+		}
   },
-
   IndividualDeck: {
     screen: IndividualDeckView,
     navigationOptions: {
-      			headerTitle: 'IndividualDeckView'
-    		}
+      headerTitle: 'IndividualDeckView'
+		}
   },
-
   QuizView: {
     screen: QuizView,
     navigationOptions: {
-      			headerTitle: 'QuizView'
-    		}
+      headerTitle: 'QuizView'
+		}
   },
-
   NewQuestionView: {
     screen: NewQuestionView,
     navigationOptions: {
-      			headerTitle: 'NewQuestionView'
-    		}
+      headerTitle: 'NewQuestionView'
+		}
   }
 })
